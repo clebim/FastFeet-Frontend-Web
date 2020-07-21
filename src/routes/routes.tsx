@@ -18,6 +18,8 @@ const RouteWrapper: React.FC<Data> = ({
 }) => {
   const { signed } = useContext(AuthContext)
 
+  console.log(signed)
+
   if (!signed && isPrivate) {
     return <Redirect to="/" />
   }

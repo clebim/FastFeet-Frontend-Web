@@ -1,13 +1,21 @@
 import React, { useContext } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import AuthContext from '../../Contexts/AuthContext'
 // import { Container } from './styles';
 
 const Dashboard: React.FC = () => {
-  const { user } = useContext(AuthContext)
-  const name = user?.name
+  const { signOut } = useContext(AuthContext)
 
-  return <h1>{name}</h1>
+  function teste() {
+    signOut()
+  }
+
+  return (
+    <form onSubmit={teste}>
+      <button type="submit">teste</button>
+    </form>
+  )
 }
 
 export default Dashboard

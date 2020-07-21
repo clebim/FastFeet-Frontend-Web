@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useEffect } from 'react'
 import api from '../services/api'
 
 interface User {
@@ -12,6 +12,7 @@ interface AuthContextData {
   // eslint-disable-next-line @typescript-eslint/ban-types
   user: User | null
   signIn(email: string, password: string): Promise<void>
+  signOut(): Promise<void>
 }
 
 interface Data {
@@ -26,18 +27,39 @@ export const AuthProvider: React.FC = ({ children }) => {
   // eslint-disable-next-line @typescript-eslint/ban-types
   const [user, setUser] = useState<User | null>(null)
 
+  useEffect(() => {
+    async function loadStorage() {
+      const userStorage = await localStorage.getItem('@AuthUser')
+      const tokenStorage = await localStorage.getItem('@AuthToken')
+
+      if (userStorage && tokenStorage) {
+        setUser(JSON.parse(userStorage))
+        api.defaults.headers.Authorization = `Bearer ${tokenStorage}`
+      }
+    }
+    loadStorage()
+  }, [])
+
   async function signIn(email: string, password: string) {
     const response = await api.post<Data>('/sessions', { email, password })
 
     const { user, token } = response.data
 
     api.defaults.headers.Authorization = `Bearer ${token}`
-
     setUser(user)
+
+    await localStorage.setItem('@AuthUser', JSON.stringify(user))
+    await localStorage.setItem('@AuthToken', token)
+  }
+
+  async function signOut() {
+    await localStorage.removeItem('@AuthUser')
+    await localStorage.removeItem('@AuthToken')
+    setUser(null)
   }
 
   return (
-    <AuthContext.Provider value={{ signed: !!user, user, signIn }}>
+    <AuthContext.Provider value={{ signed: !!user, user, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   )

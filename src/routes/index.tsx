@@ -3,13 +3,15 @@ import { BrowserRouter } from 'react-router-dom'
 import Route from './routes'
 
 import Sign from '../pages/Sign/index'
-import teste from '../pages/Dashboard/index'
+import Dashboard from '../pages/Dashboard/index'
+import Profile from '../pages/Profile/index'
 
 const routes: React.FC = () => {
   return (
     <BrowserRouter>
-      <Route path="/dashboard" isPrivate component={teste} />
       <Route path="/" exact component={Sign} />
+      <Route path="/profile" isPrivate component={Profile} />
+      <Route path="/dashboard" isPrivate component={Dashboard} />
     </BrowserRouter>
   )
 }

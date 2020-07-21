@@ -13,7 +13,6 @@ const Sign: React.FC = () => {
     event.preventDefault()
     signIn(email, password)
   }
-  console.log(user)
 
   return (
     <Container>
@@ -22,7 +21,7 @@ const Sign: React.FC = () => {
         <Form onSubmit={handleLogin}>
           <Label>Seu E-mail</Label>
           <Input
-            placeholder="exemplo@email.com"
+            placeholder="exemplo@gmail.com"
             type="email"
             value={email}
             name="email"
