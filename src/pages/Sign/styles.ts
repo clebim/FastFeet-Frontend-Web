@@ -4,7 +4,7 @@ export const Container = styled.div`
   height: 100%;
   background-color: #7d40e7;
   display: flex;
-  font-family: 'Grenze Gotisch', cursive;
+  font-family: 'Helvetica', Bold Oblique;
   font-weight: bold;
   justify-content: center;
   align-items: center;
@@ -19,9 +19,13 @@ export const Content = styled.div`
 export const Logo = styled.h1`
   margin: 50px 0;
   color: #7d40e7;
-  font-size: 32px;
+  font-size: 34px;
   display: flex;
   justify-content: center;
+
+  p {
+    margin-left: 15px;
+  }
 `
 export const Form = styled.form`
   display: flex;

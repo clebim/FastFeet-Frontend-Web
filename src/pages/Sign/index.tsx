@@ -1,10 +1,11 @@
 import React, { useState, FormEvent, useContext } from 'react'
+import { MdLocalShipping } from 'react-icons/md'
 
 import AuthContext from '../../Contexts/AuthContext'
 import { Container, Form, Input, Button, Label, Content, Logo } from './styles'
 
 const Sign: React.FC = () => {
-  const { signIn, user } = useContext(AuthContext)
+  const { signIn } = useContext(AuthContext)
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -17,7 +18,10 @@ const Sign: React.FC = () => {
   return (
     <Container>
       <Content>
-        <Logo>FASTFEET</Logo>
+        <Logo>
+          <MdLocalShipping color="7d40e7" size="40" />
+          <p>FASTFEET</p>
+        </Logo>
         <Form onSubmit={handleLogin}>
           <Label>Seu E-mail</Label>
           <Input

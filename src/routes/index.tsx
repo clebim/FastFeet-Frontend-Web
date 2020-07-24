@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom'
 import Route from './routes'
 
 import Sign from '../pages/Sign/index'
-import Dashboard from '../pages/Dashboard/index'
+import Dashboard from '../pages/Orders/index'
 import Profile from '../pages/Profile/index'
 
 const routes: React.FC = () => {
