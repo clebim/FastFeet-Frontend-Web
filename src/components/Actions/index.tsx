@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import api from '../../services/api'
+
 import {
   MdMoreHoriz,
   MdVisibility,
@@ -9,11 +11,17 @@ import {
 
 import { Button, Container, Content, ButtonAction } from './styles'
 
-export interface isVisible {
-  isActive?: boolean
+interface FunctionDelete {
+  handleDelete(id: number): Promise<void>
 }
 
-const Actions: React.FC<isVisible> = () => {
+export interface isVisible {
+  isActive?: boolean
+  id?: number,
+}
+
+
+const Actions: React.FC<isVisible & FunctionDelete> = ({ id, handleDelete }) => {
   const [visible, setVisible] = useState(false)
 
   function handleActive() {
@@ -26,7 +34,7 @@ const Actions: React.FC<isVisible> = () => {
         <MdMoreHoriz size={22} color="#666" />
       </Button>
 
-      <Content isActive={visible}>
+      <Content  isActive={visible}>
         <Link to="">
           <MdVisibility size={18} color="#8E5BE8" />
           Visualizar
@@ -35,7 +43,7 @@ const Actions: React.FC<isVisible> = () => {
           <MdCreate size={18} color="#4D85EE" />
           Editar
         </Link>
-        <ButtonAction>
+        <ButtonAction onClick={() => handleDelete(id!)} >
           <MdDeleteForever size={18} color="#DE3B3B" />
           Excluir
         </ButtonAction>

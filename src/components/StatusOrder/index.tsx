@@ -4,7 +4,7 @@ import { FiCircle } from 'react-icons/fi'
 import { Container } from './styles'
 
 export interface Status {
-  status: string
+  status?: string
 }
 
 // eslint-disable-next-line react/prop-types
