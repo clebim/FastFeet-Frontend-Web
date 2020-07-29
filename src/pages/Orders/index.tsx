@@ -1,7 +1,5 @@
-
 import React, { useEffect, useState } from 'react'
 import { FiPlus, FiSearch } from 'react-icons/fi'
-
 
 import api from '../../services/api'
 import { SetStatus } from '../../utils/SetStatus'
@@ -23,6 +21,7 @@ import {
 
 export interface Orders {
   id: number
+  // eslint-disable-next-line camelcase
   start_date: Date | null
   end_date: Date | null
   canceled_at: Date | null
@@ -32,9 +31,7 @@ export interface Orders {
   state: string
 }
 
-
 const Dashboard: React.FC = () => {
-
   const [orders, setOrders] = useState<Orders[]>([])
   useEffect(() => {
     async function loadOrders(): Promise<void> {
@@ -48,7 +45,7 @@ const Dashboard: React.FC = () => {
   async function handleDelete(id: number): Promise<void> {
     await api.delete(`orders/${id}`)
 
-    setOrders(orders.filter( order => order.id !== id))
+    setOrders(orders.filter(order => order.id !== id))
   }
 
   return (
@@ -81,21 +78,24 @@ const Dashboard: React.FC = () => {
             </thead>
             <tbody>
               {orders.map(order => (
-                <tr key={order.id} >
-                <td>{order.id}</td>
-                <td>{order.name_recipient}</td>
-                <td>{order.name_courier}</td>
-                <td>{order.city}</td>
-                <td>{order.state}</td>
-                <td>
-                  <Status 
-                    status={SetStatus(order.start_date, order.end_date, order.canceled_at)}>
-                  </Status>
-                </td>
-                
-                <Actions id={order.id} handleDelete={handleDelete} />
-                
-              </tr>
+                <tr key={order.id}>
+                  <td>{'#' + order.id}</td>
+                  <td>{order.name_recipient}</td>
+                  <td>{order.name_courier}</td>
+                  <td>{order.city}</td>
+                  <td>{order.state}</td>
+                  <td>
+                    <Status
+                      status={SetStatus(
+                        order.start_date,
+                        order.end_date,
+                        order.canceled_at
+                      )}
+                    ></Status>
+                  </td>
+
+                  <Actions id={order.id} handleDelete={handleDelete} />
+                </tr>
               ))}
             </tbody>
           </TableContainer>

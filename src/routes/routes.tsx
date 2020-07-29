@@ -1,34 +1,33 @@
 /* eslint-disable react/prop-types */
 import React, { useContext } from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import {
+  RouteProps as ReactRouterProps,
+  Redirect,
+  Route as ReactDomRoute
+} from 'react-router-dom'
 import AuthContext from '../Contexts/AuthContext'
 
-interface Data {
-  component: React.FC
+interface RouterProps extends ReactRouterProps {
   isPrivate?: boolean
-  path: string
-  exact?: boolean
+  component: React.ComponentType
 }
 
-const RouteWrapper: React.FC<Data> = ({
+const RouteWrapper: React.FC<RouterProps> = ({
   component: Component,
   isPrivate = false,
-  path,
   ...rest
 }) => {
   const { signed } = useContext(AuthContext)
-
-  console.log(signed)
 
   if (!signed && isPrivate) {
     return <Redirect to="/" />
   }
 
   if (signed && !isPrivate) {
-    return <Redirect to="/dashboard" />
+    return <Redirect to="/orders" />
   }
 
-  return <Route {...rest} path={path} component={Component} />
+  return <ReactDomRoute {...rest} render={() => <Component />} />
 }
 
 export default RouteWrapper

@@ -29,8 +29,10 @@
         "no-unused-expressions": "off",
         "@typescript-eslint/no-floating-promises": "off",
         "@typescript-eslint/no-unsafe-assignment": "off",
+        "react/prop-types": "off",
         "space-before-function-paren": "off",
         "no-explicit-any": "off",
-        "ignoreGlobals": true
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "camelcase": "off"
     }
 }

@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-import { Active } from '.'
-
 export const Container = styled.header`
   width: 100%;
   margin: 0 auto;
@@ -37,7 +35,7 @@ export const Options = styled.ul`
   flex-direction: row;
 `
 
-export const Option = styled.li<Active>`
+export const Option = styled.li`
   margin: 0 10px;
   a {
     font-weight: bold;
@@ -55,10 +53,10 @@ export const Button = styled.button`
   display: flex;
   flex-direction: column;
   margin-right: 20px;
-  color: #666;
+  color: #444;
   background: #fff;
   border: 0;
   :hover {
-    color: #333;
+    color: #de3b3b;
   }
 `

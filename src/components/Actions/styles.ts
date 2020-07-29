@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-import { isVisible } from './index'
+interface isVisible {
+  isActive: boolean
+}
 
 export const Button = styled.button`
   border: 0;

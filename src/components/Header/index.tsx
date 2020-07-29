@@ -5,11 +5,7 @@ import { MdLocalShipping, MdExitToApp } from 'react-icons/md'
 import AuthContext from '../../Contexts/AuthContext'
 import { Container, Logo, Left, Right, Options, Option, Button } from './styles'
 
-export interface Active {
-  isActive?: boolean
-}
-
-const Header: React.FC<Active> = () => {
+const Header: React.FC = () => {
   const { signOut } = useContext(AuthContext)
 
   function handleLogaut() {
@@ -21,20 +17,20 @@ const Header: React.FC<Active> = () => {
       <Left>
         <Logo>
           <MdLocalShipping size={32} color="7d40e7" />
-          <Link to="dashboard">FASTFEET</Link>
+          <Link to="orders">FASTFEET</Link>
         </Logo>
         <Options>
-          <Option isActive={false}>
-            <Link to="/dashboard">ENCOMENDAS</Link>
+          <Option>
+            <Link to="/orders">ENCOMENDAS</Link>
           </Option>
           <Option>
-            <Link to="/dashboard">ENTREGADORES</Link>
+            <Link to="/couriers">ENTREGADORES</Link>
           </Option>
           <Option>
-            <Link to="/dashboard">DESTINATÁRIOS</Link>
+            <Link to="/orders">DESTINATÁRIOS</Link>
           </Option>
           <Option>
-            <Link to="/dashboard">PROBLEMAS</Link>
+            <Link to="/orders">PROBLEMAS</Link>
           </Option>
         </Options>
       </Left>
