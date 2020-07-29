@@ -14,7 +14,6 @@ export const Title = styled.h1`
 `
 export const Form = styled.form`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
 `
@@ -35,17 +34,22 @@ export const Search = styled.input`
     color: #999;
   }
 `
-export const Button = styled.button`
-  width: 140px;
-  height: 32px;
-  color: #fff;
-  background-color: #7d40e7;
-  border: 0;
-  border-radius: 5px;
-  font-weight: bold;
+export const DivFormAndLink = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+
+  a {
+    width: 140px;
+    height: 32px;
+    color: #fff;
+    background-color: #7d40e7;
+    border: 0;
+    border-radius: 5px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `
 export const TextInput = styled.p`
   font-weight: bold;

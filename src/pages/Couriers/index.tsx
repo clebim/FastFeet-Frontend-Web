@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { FiPlus, FiSearch } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 
 import api from '../../services/api'
 import {
   Container,
   Content,
+  DivFormAndLink,
   Title,
   Form,
   Input,
   Search,
-  Button,
   TextInput,
   TableContainer
 } from './styles'
@@ -37,6 +38,8 @@ const Couriers: React.FC = () => {
 
   async function handleDelete(id: number): Promise<void> {
     await api.delete(`couriers/${id}`)
+
+    setCouriers(couriers.filter(courier => courier.id !== id))
   }
 
   return (
@@ -44,19 +47,21 @@ const Couriers: React.FC = () => {
       <Header />
       <Content>
         <Title>Gerenciando Entregadores</Title>
-        <Form>
-          <Input>
-            <FiSearch size={28} color="#999" />
-            <Search disabled placeholder="Busca por entregadores"></Search>
-          </Input>
-          <Button>
+        <DivFormAndLink>
+          <Form>
+            <Input>
+              <FiSearch size={28} color="#999" />
+              <Search disabled placeholder="Busca por entregadores"></Search>
+            </Input>
+          </Form>
+          <Link to="#">
             <FiPlus size={24} color="#FFF" />
             <TextInput>CADASTRAR</TextInput>
-          </Button>
-        </Form>
+          </Link>
+        </DivFormAndLink>
         <TableContainer>
           <thead>
-            <th>Id</th>
+            <th>ID</th>
             <th>Foto</th>
             <th>Nome</th>
             <th>Email</th>
@@ -69,7 +74,7 @@ const Couriers: React.FC = () => {
                 <td>
                   <a id="linkfoto" href={courier.avatar_url} target="blank">
                     {courier.name.split(' ').map(string => {
-                      return string.charAt(0)
+                      return string.charAt(0).toUpperCase()
                     })}
                   </a>
                 </td>

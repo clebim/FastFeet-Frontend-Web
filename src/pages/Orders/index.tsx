@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FiPlus, FiSearch } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 
 import api from '../../services/api'
 import { SetStatus } from '../../utils/SetStatus'
@@ -10,11 +11,11 @@ import Status from '../../components/StatusOrder/index'
 import {
   Container,
   Content,
+  DivFormAndLink,
   Title,
   Form,
   Input,
   Search,
-  Button,
   TextInput,
   TableContainer
 } from './styles'
@@ -53,17 +54,19 @@ const Dashboard: React.FC = () => {
       <Container>
         <Header />
         <Content>
-          <Title>Gerenciando encomendas</Title>
-          <Form>
-            <Input>
-              <FiSearch size={28} color="#999" />
-              <Search disabled placeholder="Busca por encomendas"></Search>
-            </Input>
-            <Button>
+          <Title>Gerenciando Entregadores</Title>
+          <DivFormAndLink>
+            <Form>
+              <Input>
+                <FiSearch size={28} color="#999" />
+                <Search disabled placeholder="Busca por entregadores"></Search>
+              </Input>
+            </Form>
+            <Link to="#">
               <FiPlus size={24} color="#FFF" />
               <TextInput>CADASTRAR</TextInput>
-            </Button>
-          </Form>
+            </Link>
+          </DivFormAndLink>
           <TableContainer>
             <thead>
               <tr>

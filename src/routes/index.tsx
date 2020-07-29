@@ -3,16 +3,18 @@ import { BrowserRouter, Switch } from 'react-router-dom'
 import Route from './routes'
 
 import Sign from '../pages/Sign/index'
-import Dashboard from '../pages/Orders/index'
-import Profile from '../pages/Couriers/index'
+import Orders from '../pages/Orders/index'
+import Couriers from '../pages/Couriers/index'
+import Recipients from '../pages/Recipients/index'
 
 const routes: React.FC = () => {
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Sign} />
-        <Route path="/couriers" isPrivate component={Profile} />
-        <Route path="/orders" isPrivate component={Dashboard} />
+        <Route path="/couriers" isPrivate component={Couriers} />
+        <Route path="/orders" isPrivate component={Orders} />
+        <Route path="/recipients" isPrivate component={Recipients} />
       </Switch>
     </BrowserRouter>
   )

@@ -27,10 +27,10 @@ const Header: React.FC = () => {
             <Link to="/couriers">ENTREGADORES</Link>
           </Option>
           <Option>
-            <Link to="/orders">DESTINATÁRIOS</Link>
+            <Link to="/recipients">DESTINATÁRIOS</Link>
           </Option>
           <Option>
-            <Link to="/orders">PROBLEMAS</Link>
+            <Link to="/problems">PROBLEMAS</Link>
           </Option>
         </Options>
       </Left>
