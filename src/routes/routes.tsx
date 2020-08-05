@@ -6,6 +6,7 @@ import {
   Route as ReactDomRoute
 } from 'react-router-dom'
 import AuthContext from '../Contexts/AuthContext'
+// import Loading from '../components/Loading/index'
 
 interface RouterProps extends ReactRouterProps {
   isPrivate?: boolean
@@ -19,12 +20,16 @@ const RouteWrapper: React.FC<RouterProps> = ({
 }) => {
   const { signed } = useContext(AuthContext)
 
-  if (!signed && isPrivate) {
-    return <Redirect to="/" />
+  if (rest.path === '/') {
+    return <Redirect to="/login" />
   }
 
   if (signed && !isPrivate) {
     return <Redirect to="/orders" />
+  }
+
+  if (!signed && isPrivate) {
+    return <Redirect to="/login" />
   }
 
   return <ReactDomRoute {...rest} render={() => <Component />} />

@@ -8,6 +8,7 @@ import Header from '../../components/Header/index'
 import Actions from '../../components/Actions/index'
 import Status from '../../components/StatusOrder/index'
 
+import ViewCouriers from '../../components/ViewCouriers/index'
 import {
   Container,
   Content,
@@ -34,6 +35,8 @@ export interface Orders {
 
 const Dashboard: React.FC = () => {
   const [orders, setOrders] = useState<Orders[]>([])
+  const [visibleFullOrder, setVisibleFullOrder] = useState(false)
+
   useEffect(() => {
     async function loadOrders(): Promise<void> {
       const response = await api.get<Orders[]>('/orders')
@@ -49,17 +52,22 @@ const Dashboard: React.FC = () => {
     setOrders(orders.filter(order => order.id !== id))
   }
 
+  function handleSetVisibleFullOrder(): void {
+    setVisibleFullOrder(!visibleFullOrder)
+  }
+
   return (
     <>
       <Container>
+        <ViewCouriers visibleFullOrder={visibleFullOrder} />
         <Header />
         <Content>
-          <Title>Gerenciando Entregadores</Title>
+          <Title>Gerenciando Encomendas</Title>
           <DivFormAndLink>
             <Form>
               <Input>
                 <FiSearch size={28} color="#999" />
-                <Search disabled placeholder="Busca por entregadores"></Search>
+                <Search disabled placeholder="Busca por encomendas"></Search>
               </Input>
             </Form>
             <Link to="#">
@@ -97,7 +105,12 @@ const Dashboard: React.FC = () => {
                     ></Status>
                   </td>
 
-                  <Actions id={order.id} handleDelete={handleDelete} />
+                  <Actions
+                    id={order.id}
+                    handleDelete={handleDelete}
+                    handleSetVisible={handleSetVisibleFullOrder}
+                    visibleFullOrder={visibleFullOrder}
+                  />
                 </tr>
               ))}
             </tbody>

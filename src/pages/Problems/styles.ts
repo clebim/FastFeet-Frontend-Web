@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 export const Container = styled.div`
   background-color: #f5f5f5;
 `
@@ -50,20 +51,6 @@ export const DivFormAndLink = styled.div`
     justify-content: center;
   }
 `
-
-export const Button = styled.a`
-  width: 140px;
-  cursor: pointer;
-  height: 32px;
-  color: #fff;
-  background-color: #7d40e7;
-  border: 0;
-  border-radius: 5px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
 export const TextInput = styled.p`
   font-weight: bold;
   color: #fff;
@@ -76,7 +63,7 @@ export const TableContainer = styled.table`
   border-spacing: 0 20px;
 
   thead th {
-    width: 350px;
+    width: 750px;
     text-align: initial;
     color: #444;
     font-size: 16px;
@@ -91,7 +78,7 @@ export const TableContainer = styled.table`
   }
 
   tbody td {
-    width: 350px;
+    width: 750px;
     text-align: initial;
     border-radius: 4px;
     background: #fff;
@@ -105,16 +92,12 @@ export const TableContainer = styled.table`
     }
 
     &:first-child {
-      width: 100px;
+      width: 130px;
       padding: 0 10px;
     }
     &:last-child {
       text-align: end;
-      padding-right: 10px;
-      a {
-        color: #4d85ee;
-        align-items: center;
-      }
+      padding-right: 20px;
     }
   }
 `

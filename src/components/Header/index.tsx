@@ -16,7 +16,7 @@ const Header: React.FC = () => {
     <Container>
       <Left>
         <Logo>
-          <MdLocalShipping size={32} color="7d40e7" />
+          <MdLocalShipping size={32} color="#7d40e7" />
           <Link to="orders">FASTFEET</Link>
         </Logo>
         <Options>

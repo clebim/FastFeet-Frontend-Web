@@ -15,7 +15,7 @@ import {
   TableContainer
 } from './styles'
 import Header from '../../components/Header/index'
-import Actions from '../../components/Actions/index'
+import ActionsCouriers from '../../components/ActionsCouriers/index'
 
 interface DataCouriers {
   id: number
@@ -80,7 +80,7 @@ const Couriers: React.FC = () => {
                 </td>
                 <td>{courier.name}</td>
                 <td>{courier.email}</td>
-                <Actions id={courier.id} handleDelete={handleDelete} />
+                <ActionsCouriers id={courier.id} handleDelete={handleDelete} />
               </tr>
             ))}
           </tbody>

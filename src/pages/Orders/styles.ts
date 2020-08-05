@@ -2,6 +2,8 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   background-color: #f5f5f5;
+  position: relative;
+  z-index: 1;
 `
 export const Content = styled.div`
   max-width: 1200px;

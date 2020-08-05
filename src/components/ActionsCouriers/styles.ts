@@ -10,8 +10,8 @@ export const Button = styled.button`
   background: none;
 `
 
-export const Container = styled.td<isVisible>`
-  position: ${props => (props.isActive ? 'relative' : 'initial')};
+export const Container = styled.td`
+  position: relative;
 `
 
 export const Content = styled.div<isVisible>`
@@ -61,21 +61,6 @@ export const ButtonAction = styled.button`
   margin: 10px 15px;
   display: flex;
   align-items: center;
-  svg {
-    margin-right: 10px;
-  }
-`
-export const ButtonView = styled.button`
-  font-size: 16px;
-  color: #999;
-  margin: 10px 15px;
-  background: none;
-  text-align: center;
-  border: 0;
-  border-bottom: 1px solid #eee;
-  display: flex;
-  align-items: center;
-
   svg {
     margin-right: 10px;
   }
