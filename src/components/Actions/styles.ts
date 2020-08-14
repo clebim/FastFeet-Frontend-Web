@@ -11,7 +11,7 @@ export const Button = styled.button`
 `
 
 export const Container = styled.td<isVisible>`
-  position: ${props => (props.isActive ? 'relative' : 'initial')};
+  position: ${props => (props.isActive ? 'relative' : 'block')};
 `
 
 export const Content = styled.div<isVisible>`
