@@ -54,3 +54,13 @@ export const Address = styled.div`
     padding: 2px 0;
   }
 `
+
+export const Button = styled.button`
+  align-self: flex-end;
+  background: none;
+  border: none;
+`
+export const Top = styled.div`
+  display: flex;
+  justify-content: space-between;
+`

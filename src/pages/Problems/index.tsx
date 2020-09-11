@@ -15,7 +15,7 @@ import {
   TableContainer
 } from './styles'
 import Header from '../../components/Header/index'
-import ActionsCouriers from '../../components/ActionsCouriers/index'
+import ActionsProblems from '../../components/ActionsProblems/index'
 
 interface Delivery {
   delivery_id: number
@@ -68,7 +68,7 @@ const Problems: React.FC = () => {
               <tr key={problem.delivery_id}>
                 <td>{problem.delivery_id}</td>
                 <td>{problem.description}</td>
-                <ActionsCouriers
+                <ActionsProblems
                   id={problem.delivery_id}
                   handleDelete={handleDelete}
                 />

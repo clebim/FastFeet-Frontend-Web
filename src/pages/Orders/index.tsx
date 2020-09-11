@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import api from '../../services/api'
 import { SetStatus } from '../../utils/SetStatus'
 import Header from '../../components/Header/index'
-import Actions from '../../components/Actions/index'
+import Actions from '../../components/ActionsOrders/index'
 import Status from '../../components/StatusOrder/index'
 
 import ViewCouriers from '../../components/ViewCouriers/index'
@@ -59,7 +59,10 @@ const Dashboard: React.FC = () => {
   return (
     <>
       <Container>
-        <ViewCouriers visibleFullOrder={visibleFullOrder} />
+        <ViewCouriers
+          visibleFullOrder={visibleFullOrder}
+          handleSetVisibleFullOrder={handleSetVisibleFullOrder}
+        />
         <Header />
         <Content>
           <Title>Gerenciando Encomendas</Title>
