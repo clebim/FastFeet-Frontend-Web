@@ -40,6 +40,7 @@ const Dashboard: React.FC = () => {
   useEffect(() => {
     async function loadOrders(): Promise<void> {
       const response = await api.get<Orders[]>('/orders')
+      console.log('chamo')
       setOrders(response.data)
     }
 
@@ -73,7 +74,7 @@ const Dashboard: React.FC = () => {
                 <Search disabled placeholder="Busca por encomendas"></Search>
               </Input>
             </Form>
-            <Link to="#">
+            <Link to="/register/order">
               <FiPlus size={24} color="#FFF" />
               <TextInput>CADASTRAR</TextInput>
             </Link>

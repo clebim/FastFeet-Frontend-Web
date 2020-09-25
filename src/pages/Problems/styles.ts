@@ -68,7 +68,7 @@ export const TableContainer = styled.table`
     color: #444;
     font-size: 16px;
     &:first-child {
-      width: 100px;
+      width: 140px;
       padding: 0 10px;
     }
     &:last-child {

@@ -16,6 +16,7 @@ import {
 } from './styles'
 import Header from '../../components/Header/index'
 import ActionsProblems from '../../components/ActionsProblems/index'
+import ViewProblems from '../../components/ViewProblems/index'
 
 interface Delivery {
   delivery_id: number
@@ -24,6 +25,7 @@ interface Delivery {
 
 const Problems: React.FC = () => {
   const [problems, setProblems] = useState<Delivery[]>([])
+  const [visibleFullProblem, setVisibleFullProblem] = useState(false)
 
   async function handleDelete(id: number): Promise<void> {
     api.delete(`delivery/${id}/cancel_problem`)
@@ -40,9 +42,21 @@ const Problems: React.FC = () => {
     LoadingProblems()
   }, [])
 
+  function handleSetVisibleFullProblem(): void {
+    setVisibleFullProblem(!visibleFullProblem)
+  }
+
   return (
     <Container>
       <Header />
+      {problems.map(problem => (
+        <ViewProblems
+          key={problem.delivery_id}
+          handleSetVisibleFullProblem={handleSetVisibleFullProblem}
+          visibleFullProblem={visibleFullProblem}
+          problem={problem.description}
+        />
+      ))}
       <Content>
         <Title>Gerenciando Problemas</Title>
         <DivFormAndLink>
@@ -59,7 +73,7 @@ const Problems: React.FC = () => {
         </DivFormAndLink>
         <TableContainer>
           <thead>
-            <th>Encomenda</th>
+            <th>Id Encomenda</th>
             <th>Problema</th>
             <th>Açoẽs</th>
           </thead>
@@ -71,6 +85,8 @@ const Problems: React.FC = () => {
                 <ActionsProblems
                   id={problem.delivery_id}
                   handleDelete={handleDelete}
+                  handleSetFullProblem={handleSetVisibleFullProblem}
+                  visibleFullProblem={visibleFullProblem}
                 />
               </tr>
             ))}
