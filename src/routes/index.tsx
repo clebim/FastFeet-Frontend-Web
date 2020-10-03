@@ -8,8 +8,8 @@ import Couriers from '../pages/Couriers/index'
 import Recipients from '../pages/Recipients/index'
 import Problems from '../pages/Problems/index'
 import Loading from '../components/Loading'
-import RegisterOrder from '../pages/registerOrder/index'
-import RegisterCouriers from '../pages/registerCouriers/index'
+import RegisterOrder from '../pages/RegisterOrder/index'
+import RegisterCouriers from '../pages/RegisterCouriers/index'
 
 const routes: React.FC = () => {
   return (

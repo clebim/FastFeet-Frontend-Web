@@ -15,7 +15,7 @@ import {
 } from './styles'
 import Header from '../../components/Header/index'
 
-const registerOrder: React.FC = () => {
+const RegisterOrder: React.FC = () => {
   const [recipient, setRecipient] = useState('')
   const [deliveryman, setDeliveryman] = useState('')
   const [productName, setProductName] = useState('')
@@ -73,4 +73,4 @@ const registerOrder: React.FC = () => {
   )
 }
 
-export default registerOrder
+export default RegisterOrder
