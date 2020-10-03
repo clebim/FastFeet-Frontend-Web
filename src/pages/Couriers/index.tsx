@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { FiPlus, FiSearch } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
+import { toast, ToastContainer } from 'react-toastify'
 
 import api from '../../services/api'
 import {
@@ -29,9 +30,12 @@ const Couriers: React.FC = () => {
 
   useEffect(() => {
     async function loadCouriers() {
-      const response = await api.get<DataCouriers[]>('/couriers')
-      setCouriers(response.data)
-      console.log(response.data)
+      try {
+        const response = await api.get<DataCouriers[]>('/couriers')
+        setCouriers(response.data)
+      } catch (error) {
+        toast.error('Erro ao buscar na api')
+      }
     }
     loadCouriers()
   }, [])
@@ -44,6 +48,7 @@ const Couriers: React.FC = () => {
 
   return (
     <Container>
+      <ToastContainer />
       <Header />
       <Content>
         <Title>Gerenciando Entregadores</Title>
@@ -54,7 +59,7 @@ const Couriers: React.FC = () => {
               <Search disabled placeholder="Busca por entregadores"></Search>
             </Input>
           </Form>
-          <Link to="#">
+          <Link to="/register/couriers">
             <FiPlus size={24} color="#FFF" />
             <TextInput>CADASTRAR</TextInput>
           </Link>

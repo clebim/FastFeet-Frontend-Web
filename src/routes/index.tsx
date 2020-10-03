@@ -9,6 +9,7 @@ import Recipients from '../pages/Recipients/index'
 import Problems from '../pages/Problems/index'
 import Loading from '../components/Loading'
 import RegisterOrder from '../pages/registerOrder/index'
+import RegisterCouriers from '../pages/registerCouriers/index'
 
 const routes: React.FC = () => {
   return (
@@ -21,6 +22,11 @@ const routes: React.FC = () => {
         <Route path="/recipients" isPrivate component={Recipients} />
         <Route path="/problems" isPrivate component={Problems} />
         <Route path="/register/order" isPrivate component={RegisterOrder} />
+        <Route
+          path="/register/couriers"
+          isPrivate
+          component={RegisterCouriers}
+        />
       </Switch>
     </BrowserRouter>
   )

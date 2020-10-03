@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { MdDone, MdKeyboardArrowLeft } from 'react-icons/md'
+import { ToastContainer, toast } from 'react-toastify'
 
 import {
   Container,
@@ -15,9 +16,14 @@ import {
 import Header from '../../components/Header/index'
 
 const registerOrder: React.FC = () => {
+  const [recipient, setRecipient] = useState('')
+  const [deliveryman, setDeliveryman] = useState('')
+  const [productName, setProductName] = useState('')
+
   return (
     <>
       <Header />
+      <ToastContainer />
       <Container>
         <Top>
           <Left>
@@ -51,8 +57,11 @@ const registerOrder: React.FC = () => {
             </TopForm>
             <BottomForm>
               <label>Nome do Produto</label>
-              <input type="text"></input>
-              <ButtonSubmit>
+              <input
+                type="text"
+                onChange={e => setProductName(e.target.value)}
+              ></input>
+              <ButtonSubmit type="submit">
                 <MdDone size={20} color="#FFFFFF" />
                 <span>SALVAR</span>
               </ButtonSubmit>
