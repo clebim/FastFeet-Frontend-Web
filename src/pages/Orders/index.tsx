@@ -40,7 +40,6 @@ const Dashboard: React.FC = () => {
   useEffect(() => {
     async function loadOrders(): Promise<void> {
       const response = await api.get<Orders[]>('/orders')
-      console.log('chamo')
       setOrders(response.data)
     }
 
